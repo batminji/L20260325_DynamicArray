@@ -20,28 +20,36 @@ public:
 
 	void PushBack(int InValue)
 	{
-		Size++;
-		int* NewData = new int[Size];
-
-		for (int i = 0; i < Size - 1; ++i)
+		if (Capacity <= Size)
 		{
-			NewData[i] = Data[i];
+			Capacity = Size * 2;
+			int* NewData = new int[Capacity];
+
+			for (int i = 0; i < Size; ++i)
+			{
+				NewData[i] = Data[i];
+			}
+			delete[] Data;
+			Data = NewData;
 		}
-		NewData[Size - 1] = InValue;
 
-		delete[] Data;
-
-		Data = NewData;
+		Data[Size] = InValue;
+		Size++;
 	}
 
-	inline int GetSize()
+	inline size_t GetSize() const
 	{
 		return Size;
 	}
 
-// protected:
+	int& operator[](size_t Index) const
+	{
+		return Data[Index];
+	}
+
+protected:
 	int* Data;
-	int Size;
+	size_t Size;
 	int Capacity;
 };
 
