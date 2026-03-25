@@ -43,6 +43,11 @@ public:
 		return Size;
 	}
 
+	inline size_t GetCapacity() const
+	{
+		return Capacity;
+	}
+
 	int& operator[](size_t Index) const
 	{
 		return Data[Index];
@@ -61,7 +66,7 @@ public:
 protected:
 	T* Data;
 	size_t Size;
-	int Capacity;
+	size_t Capacity;
 };
 
 #endif //__DynamicArray_H__

@@ -9,13 +9,15 @@ int main()
 
 	DynamicArray<int> MyArray;
 
-	for (int i = 0; i < 100; ++i)
+	for (int i = 100; i > 0; --i)
 	{
-		int Input = rand() % 100;
-		MyArray.PushBack(Input);
+		MyArray.PushBack(i);
 	}
 
 	std::sort(MyArray.Begin(), MyArray.End());
+
+	std::cout << "Size : " << MyArray.GetSize() << std::endl;
+	std::cout << "Capacity : " << MyArray.GetCapacity() << std::endl;
 
 	for (int i = 0; i < MyArray.GetSize(); ++i)
 	{
