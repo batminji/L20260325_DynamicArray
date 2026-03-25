@@ -11,11 +11,17 @@ int main()
 	IntArray.PushBack(2);
 	IntArray.PushBack(3);
 
-	for (DynamicArray<int>::Iterator it = IntArray.begin(); it.operator!=(IntArray.end()); it.operator++())
+	for (DynamicArray<int>::Iterator it = IntArray.begin(); it!=(IntArray.end()); it++)
 	{
-		std::cout << *it << std::endl;
+		std::cout << *it << " ";
 	}
+	std::cout << std::endl;
 
+	for (DynamicArray<int>::Reverse_Iterator it = IntArray.rbegin(); it!=(IntArray.rend()); it++)
+	{
+		std::cout << *it << " ";
+	}
+	std::cout << std::endl;
 	/*for (auto I : IntArray)
 	{
 		std::cout << I << " ";

@@ -51,6 +51,12 @@ public:
 			return *this;
 		}
 
+		Iterator operator++(int)
+		{
+			Pointer++;
+			return *this;
+		}
+
 		bool operator!=(const Iterator& Other) const
 		{
 			return Pointer != Other.Pointer;
@@ -71,6 +77,12 @@ public:
 		}
 
 		Reverse_Iterator& operator++()
+		{
+			Pointer--;
+			return *this;
+		}
+
+		Reverse_Iterator operator++(int)
 		{
 			Pointer--;
 			return *this;
