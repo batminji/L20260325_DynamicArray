@@ -2,6 +2,7 @@
 #ifndef __DynamicArray_H__
 #define __DynamicArray_H__
 
+template <typename T>
 class DynamicArray
 {
 public:
@@ -9,7 +10,7 @@ public:
 	{
 		Capacity = 1;
 		Size = 0;
-		Data = new int[Capacity];
+		Data = new T[Capacity];
 	}
 
 	~DynamicArray()
@@ -23,7 +24,7 @@ public:
 		if (Capacity <= Size)
 		{
 			Capacity = Size * 2;
-			int* NewData = new int[Capacity];
+			T* NewData = new T[Capacity];
 
 			for (int i = 0; i < Size; ++i)
 			{
@@ -58,7 +59,7 @@ public:
 	}
 
 protected:
-	int* Data;
+	T* Data;
 	size_t Size;
 	int Capacity;
 };

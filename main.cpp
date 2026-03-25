@@ -7,7 +7,7 @@ int main()
 {
 	srand((unsigned)time(nullptr));
 
-	DynamicArray MyArray;
+	DynamicArray<int> MyArray;
 
 	for (int i = 0; i < 100; ++i)
 	{
