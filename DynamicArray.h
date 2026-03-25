@@ -19,6 +19,54 @@ public:
 		Data = nullptr;
 	}
 
+	class Iterator
+	{
+	public:
+		T* Pointer;
+
+		Iterator(T* Pointer) : Pointer(Pointer) {}
+
+		T& operator*()
+		{
+			return *Pointer;
+		}
+
+		Iterator& operator++()
+		{
+			Pointer++;
+			return *this;
+		}
+
+		bool operator!=(Iterator& other)
+		{
+			return Pointer != other.Pointer;
+		}
+	};
+
+	class Reverse_Iterator
+	{
+	public:
+		T* Pointer;
+
+		Reverse_Iterator(T* Pointer) : Pointer(Pointer) {}
+
+		T& operator*()
+		{
+			return *Pointer;
+		}
+
+		Reverse_Iterator& operator++()
+		{
+			Pointer--;
+			return *this;
+		}
+
+		bool operator!=(Reverse_Iterator& other)
+		{
+			return Pointer != other.Pointer;
+		}
+	};
+
 	void PushBack(int InValue)
 	{
 		if (Capacity <= Size)
@@ -53,14 +101,24 @@ public:
 		return Data[Index];
 	}
 
-	int* Begin()
+	Iterator begin()
 	{
-		return &Data[0];
+		return Iterator(&Data[0]);
 	}
 
-	int* End()
+	Iterator end()
 	{
-		return &Data[Size];
+		return Iterator(&Data[Size]);
+	}
+
+	Reverse_Iterator rbegin()
+	{
+		return Reverse_Iterator(&Data[Size - 1]);
+	}
+
+	Reverse_Iterator rend()
+	{
+		return Reverse_Iterator(&Data[-1]);
 	}
 
 	void Erase(size_t Index)

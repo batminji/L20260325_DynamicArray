@@ -17,16 +17,16 @@ int main()
 		MyArray.PushBack(i);
 	}
 
-	std::sort(MyArray.Begin(), MyArray.End());
+	// std::sort(MyArray.begin(), MyArray.end());
 
 	MyArray.Erase(5);
 
 	std::cout << "Size : " << MyArray.GetSize() << std::endl;
 	std::cout << "Capacity : " << MyArray.GetCapacity() << std::endl;
 
-	for (int i = 0; i < MyArray.GetSize(); ++i)
+	for (auto A : MyArray)
 	{
-		std::cout << MyArray[i] << " ";
+		std::cout << A << " ";
 	}
 	std::cout << std::endl;
 
