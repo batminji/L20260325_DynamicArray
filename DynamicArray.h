@@ -13,10 +13,20 @@ public:
 		Data = new T[Capacity];
 	}
 
+	DynamicArray(int Capacity)
+	{
+		this->Capacity = Capacity;
+		Size = 0;
+		Data = new T[this->Capacity];
+	}
+
 	~DynamicArray()
 	{
-		delete[] Data;
-		Data = nullptr;
+		if (Data)
+		{
+			delete[] Data;
+			Data = nullptr;
+		}
 	}
 
 	class Iterator
@@ -71,7 +81,7 @@ public:
 	{
 		if (Capacity <= Size)
 		{
-			Capacity = Size * 2;
+			Capacity *= 2;
 			T* NewData = new T[Capacity];
 
 			for (int i = 0; i < Size; ++i)
@@ -123,9 +133,13 @@ public:
 
 	void Erase(size_t Index)
 	{
-		for (size_t i = Index; i < Size; ++i)
+		if (Index >= Size)
 		{
-			Data[i - 1] = Data[i];
+			return;
+		}
+		for (size_t i = Index; i < Size - 1; ++i)
+		{
+			Data[i] = Data[i + 1];
 		}
 		Size--;
 	}
