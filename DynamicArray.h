@@ -49,7 +49,7 @@ public:
 			return *this;
 		}
 
-		bool operator!=(Iterator& other)
+		bool operator!=(const Iterator& other) const
 		{
 			return Pointer != other.Pointer;
 		}
@@ -73,7 +73,7 @@ public:
 			return *this;
 		}
 
-		bool operator!=(Reverse_Iterator& other)
+		bool operator!=(const Reverse_Iterator& other) const
 		{
 			return Pointer != other.Pointer;
 		}
@@ -87,12 +87,12 @@ public:
 			T* NewData = new T[Capacity];
 
 			// memcpy 함수 사용
-			memcpy(NewData, Data, Size * sizeof(T));
+			// memcpy(NewData, Data, Size * sizeof(T));
 			// std::move() 사용
-			/*for (int i = 0; i < Size; ++i)
+			for (int i = 0; i < Size; ++i)
 			{
 				NewData[i] = std::move(Data[i]);
-			}*/
+			}
 
 			/*for (int i = 0; i < Size; ++i)
 			{
