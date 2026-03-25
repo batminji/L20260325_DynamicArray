@@ -79,7 +79,7 @@ public:
 		}
 	};
 
-	void PushBack(int InValue)
+	void PushBack(const T& InValue)
 	{
 		if (Capacity <= Size)
 		{
@@ -108,7 +108,7 @@ public:
 		return Capacity;
 	}
 
-	int& operator[](size_t Index) const
+	T& operator[](size_t Index) const
 	{
 		if (Index >= Size || Index < 0)
 		{
