@@ -1,34 +1,19 @@
 // Standard Template Library
 #include <iostream>
 #include <vector>
-#include <algorithm>
 #include "DynamicArray.h"
 
 int main()
 {
-	std::vector<int> MyVector;
-
-	srand((unsigned)time(nullptr));
-
-	DynamicArray<int> MyArray;
-
-	for (int i = 100; i > 0; --i)
+	DynamicArray<int> D;
+	try
 	{
-		MyArray.PushBack(i);
+		D[10];
 	}
-
-	// std::sort(MyArray.begin(), MyArray.end());
-
-	MyArray.Erase(5);
-
-	std::cout << "Size : " << MyArray.GetSize() << std::endl;
-	std::cout << "Capacity : " << MyArray.GetCapacity() << std::endl;
-
-	for (auto A : MyArray)
+	catch (std::out_of_range e)
 	{
-		std::cout << A << " ";
+		std::cout << e.what() << std::endl;
 	}
-	std::cout << std::endl;
 
 	return 0;
 }

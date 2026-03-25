@@ -2,6 +2,8 @@
 #ifndef __DynamicArray_H__
 #define __DynamicArray_H__
 
+#include <stdexcept>
+
 template <typename T>
 class DynamicArray
 {
@@ -108,6 +110,10 @@ public:
 
 	int& operator[](size_t Index) const
 	{
+		if (Index >= Size || Index < 0)
+		{
+			throw std::out_of_range("ÀÎµ¦½º°¡ ¹üÀ§¸¦ ¹þ¾î³²");
+		}
 		return Data[Index];
 	}
 
@@ -133,9 +139,9 @@ public:
 
 	void Erase(size_t Index)
 	{
-		if (Index >= Size)
+		if (Index >= Size || Index < 0)
 		{
-			return;
+			throw std::out_of_range("ÀÎµ¦½º°¡ ¹üÀ§¸¦ ¹þ¾î³²");
 		}
 		for (size_t i = Index; i < Size - 1; ++i)
 		{
@@ -146,8 +152,11 @@ public:
 
 	void Clear()
 	{
-		delete[] Data;
-		Data = nullptr;
+		if (Data)
+		{
+			delete[] Data;
+			Data = nullptr;
+		}
 
 		Capacity = 1;
 		Size = 0;
