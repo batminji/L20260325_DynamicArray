@@ -63,6 +63,25 @@ public:
 		return &Data[Size];
 	}
 
+	void Erase(size_t Index)
+	{
+		for (size_t i = Index; i < Size; ++i)
+		{
+			Data[i - 1] = Data[i];
+		}
+		Size--;
+	}
+
+	void Clear()
+	{
+		delete[] Data;
+		Data = nullptr;
+
+		Capacity = 1;
+		Size = 0;
+		Data = new T[Capacity];
+	}
+
 protected:
 	T* Data;
 	size_t Size;

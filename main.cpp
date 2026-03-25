@@ -1,10 +1,13 @@
 // Standard Template Library
 #include <iostream>
+#include <vector>
 #include <algorithm>
 #include "DynamicArray.h"
 
 int main()
 {
+	std::vector<int> MyVector;
+
 	srand((unsigned)time(nullptr));
 
 	DynamicArray<int> MyArray;
@@ -15,6 +18,8 @@ int main()
 	}
 
 	std::sort(MyArray.Begin(), MyArray.End());
+
+	MyArray.Erase(5);
 
 	std::cout << "Size : " << MyArray.GetSize() << std::endl;
 	std::cout << "Capacity : " << MyArray.GetCapacity() << std::endl;
