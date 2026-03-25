@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #ifndef __DynamicArray_H__
 #define __DynamicArray_H__
 
@@ -86,10 +86,18 @@ public:
 			Capacity *= 2;
 			T* NewData = new T[Capacity];
 
-			for (int i = 0; i < Size; ++i)
+			// memcpy í•¨ìˆ˜ ì‚¬ìš©
+			memcpy(NewData, Data, Size * sizeof(T));
+			// std::move() ì‚¬ìš©
+			/*for (int i = 0; i < Size; ++i)
+			{
+				NewData[i] = std::move(Data[i]);
+			}*/
+
+			/*for (int i = 0; i < Size; ++i)
 			{
 				NewData[i] = Data[i];
-			}
+			}*/
 			delete[] Data;
 			Data = NewData;
 		}
@@ -112,7 +120,7 @@ public:
 	{
 		if (Index >= Size || Index < 0)
 		{
-			throw std::out_of_range("ÀÎµ¦½º°¡ ¹üÀ§¸¦ ¹þ¾î³²");
+			throw std::out_of_range("ì¸ë±ìŠ¤ê°€ ë²”ìœ„ë¥¼ ë²—ì–´ë‚¨");
 		}
 		return Data[Index];
 	}
@@ -141,7 +149,7 @@ public:
 	{
 		if (Index >= Size || Index < 0)
 		{
-			throw std::out_of_range("ÀÎµ¦½º°¡ ¹üÀ§¸¦ ¹þ¾î³²");
+			throw std::out_of_range("ì¸ë±ìŠ¤ê°€ ë²”ìœ„ë¥¼ ë²—ì–´ë‚¨");
 		}
 		for (size_t i = Index; i < Size - 1; ++i)
 		{
