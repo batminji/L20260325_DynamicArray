@@ -33,8 +33,10 @@ public:
 
 	class Iterator
 	{
-	public:
+	protected:
 		T* Pointer;
+
+	public:
 
 		Iterator(T* Pointer) : Pointer(Pointer) {}
 
@@ -49,17 +51,18 @@ public:
 			return *this;
 		}
 
-		bool operator!=(const Iterator& other) const
+		bool operator!=(const Iterator& Other) const
 		{
-			return Pointer != other.Pointer;
+			return Pointer != Other.Pointer;
 		}
 	};
 
 	class Reverse_Iterator
 	{
-	public:
+	protected:
 		T* Pointer;
 
+	public:
 		Reverse_Iterator(T* Pointer) : Pointer(Pointer) {}
 
 		T& operator*()
@@ -73,9 +76,9 @@ public:
 			return *this;
 		}
 
-		bool operator!=(const Reverse_Iterator& other) const
+		bool operator!=(const Reverse_Iterator& Other) const
 		{
-			return Pointer != other.Pointer;
+			return Pointer != Other.Pointer;
 		}
 	};
 
