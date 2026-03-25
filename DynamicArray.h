@@ -47,6 +47,16 @@ public:
 		return Data[Index];
 	}
 
+	int* Begin()
+	{
+		return &Data[0];
+	}
+
+	int* End()
+	{
+		return &Data[Size];
+	}
+
 protected:
 	int* Data;
 	size_t Size;

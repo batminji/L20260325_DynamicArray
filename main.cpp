@@ -1,15 +1,21 @@
 // Standard Template Library
 #include <iostream>
+#include <algorithm>
 #include "DynamicArray.h"
 
 int main()
 {
+	srand((unsigned)time(nullptr));
+
 	DynamicArray MyArray;
 
-	MyArray.PushBack(1);
-	MyArray.PushBack(2);
-	MyArray.PushBack(3);
-	MyArray.PushBack(4);
+	for (int i = 0; i < 100; ++i)
+	{
+		int Input = rand() % 100;
+		MyArray.PushBack(Input);
+	}
+
+	std::sort(MyArray.Begin(), MyArray.End());
 
 	for (int i = 0; i < MyArray.GetSize(); ++i)
 	{
